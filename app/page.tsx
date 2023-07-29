@@ -8,9 +8,7 @@ export default function Page() {
   const { theme, setTheme } = useTheme()
   return (
     <div>
-      <button onClick={() => setTheme('light')}>Light Mode</button>
-      <button onClick={() => setTheme('dark')}>Dark Mode</button>
-      <Button>Click me</Button>
+      
 
     </div>
   )
