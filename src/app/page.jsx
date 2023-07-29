@@ -1,11 +1,14 @@
 //app/page.tsx
-import { UserButton } from "@clerk/nextjs";
+
+import HeaderNavBar from "../components/HeaderNavBar";
 
 export default function Home() {
   return (
-    <div>
-        <h1>inicio</h1>
-      <UserButton afterSignOutUrl="/"/>
-    </div>
-  )
+    <main>
+      <header>
+        <HeaderNavBar />
+      </header>
+      
+    </main>
+  );
 }
