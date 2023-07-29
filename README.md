@@ -1,1 +1,1 @@
-### Password Generator 2.0
+### Password generator
