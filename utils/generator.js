@@ -18,7 +18,7 @@ const getRandom = (range) => {
   return Math.floor(Math.random() * range);
 };
 
-const generatePassword = (length, avoid, special) => {
+export const generatePassword = (length, avoid, special) => {
   let pass = "";
 
   // siempre que estén seleccionadas las dos opciones
