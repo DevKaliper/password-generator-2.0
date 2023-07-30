@@ -39,13 +39,15 @@ export const Navbar = () => {
         <NavbarItem>
           <Link
             color="foreground"
-            href="#">
+            href="https://devkaliper.me/Password-Generator/"
+            target="_blank"
+            >
             v1.0.0
           </Link>
         </NavbarItem>
         <NavbarItem isActive>
           <Link
-            href="#"
+            href="/"
             aria-current="page"
             color="success">
             v2.0.0{" "}
@@ -60,7 +62,7 @@ export const Navbar = () => {
         <NavbarItem>
           <Link
             color="foreground"
-            href="#">
+            href="/features">
             Features
           </Link>
         </NavbarItem>
