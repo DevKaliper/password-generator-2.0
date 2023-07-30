@@ -1,32 +1,69 @@
-
-"use client"
-import {useState} from "react"
+"use client";
+import { useState } from "react";
 import { Card, CardHeader, CardBody, CardFooter } from "@nextui-org/card";
 import { Checkbox } from "@nextui-org/checkbox";
 import { Button } from "@nextui-org/button";
 import { Input } from "@nextui-org/input";
-import {generatePassword} from "../utils/generator.js"
+import { generatePassword } from "../utils/generator.js";
 import { Snippet } from "@nextui-org/snippet";
-
-
+import { SnackbarProvider, enqueueSnackbar } from "notistack";
+import { FcApproval, FcHighPriority, FcLock } from "react-icons/fc";
 
 export const CardPassword = () => {
-  const [password, setPassword] = useState<string>("")
-  const [length, setLength] = useState<number>(0)
-  const [avoidSimilar, setAvoidSimilar] = useState<boolean>(false)
-  const [special, setSpecial] = useState<boolean>(false)
+  const [password, setPassword] = useState("");
+  const [length, setLength] = useState<number>(0);
+  const [avoidSimilar, setAvoidSimilar] = useState<boolean>(false);
+  const [special, setSpecial] = useState<boolean>(false);
+  const [classification, setClassification] = useState<number>(0);
+  
 
   const handleSubmit = () => {
-    const newPassword = generatePassword(length, avoidSimilar, special)
-    setPassword(newPassword)
-  }
+    const newPassword = generatePassword(length, avoidSimilar, special);
+    if (!avoidSimilar && !special) {
+      return enqueueSnackbar({ // en el caso de que no se seleccione ninguna opción
+        message: "You need to select at least one option",
+        variant: "error",
+      });
+    }
+    if (length <= 0) {
+      return enqueueSnackbar({ // en el caso de que coloque un número menor a 0 o 0
+        message: "You need to select a number greater than 0",
+        variant: "error",
+      });
+    }
+
+    // en el caso de que se seleccione alguna opción
+    enqueueSnackbar({ message: "Password generated", variant: "success" });
+
+    // clasificación de contraseña
+    if (length < 5 ) {
+      setClassification(1);
+
+    }
+    else if (length >= 5 && length <= 10) {
+      setClassification(2);
+    }
+    else if (length > 10) {
+      setClassification(3);
+    }
+
+
+    
+    setPassword(newPassword);
+  };
 
   return (
     <Card>
+      <SnackbarProvider />
       <CardHeader className="flex flex-col gap-1">
-      <Snippet hideSymbol size="lg" className="w-full text-center">{password}</Snippet>
-        
-        <p>Aquí irá la clasificación de contraseña</p>
+        <Snippet
+          hideSymbol
+          size="lg"
+          className="w-full text-center">
+          {password}
+        </Snippet>
+
+        <p className="flex w-full gap-2 justify-center items-center text-lg">{classification == 1 ? <FcHighPriority/>  : classification == 2 ? <FcApproval/> : classification==3 ? <FcLock/>: ""  } {classification == 1 ? "Weak" : classification == 2 ? "Medium" : classification==3 ? "Strong": ""}</p>
       </CardHeader>
       <CardBody>
         <div className="mb-3 flex items-center justify-center gap-5">
@@ -36,41 +73,44 @@ export const CardPassword = () => {
             type="number"
             value={length}
             placeholder="length"
-            onChange={(e) => setLength((e.target.value))}
+            onChange={(e) => setLength(e.target.value)}
             className="max-w-[100px]"
           />
           <span className="font-bold">how many characters?</span>
         </div>
 
-          <div className="mb-3 flex items-center justify-center gap-5">
-            <Checkbox
-              color="success"
-              onChange={(e) => setAvoidSimilar(e.target.checked)}
-              aria-labelledby=":R1iracq"
-              aria-describedby="react-aria-:R2iracqH3:"
-            />
-            <span className="font-bold"> Avoid similar characters?</span>
-          </div>
-          <div className="mb-3 flex items-center justify-center gap-5">
-            <Checkbox
-              color="success"
-              onChange={(e) => setSpecial(e.target.checked)}
-              aria-labelledby=":R1iracq"
-              aria-describedby="react-aria-:R2iracqH3:"
-            />
-            <span className="font-bold"> Want special characters? &quot;@;/_...&quot;</span>
-          </div>
-
-
+        <div className="mb-3 flex items-center justify-center gap-5">
+          <Checkbox
+            color="success"
+            onChange={(e) => setAvoidSimilar(e.target.checked)}
+            aria-labelledby=":R1iracq"
+            aria-describedby="react-aria-:R2iracqH3:"
+          />
+          <span className="font-bold"> Avoid similar characters?</span>
+        </div>
+        <div className="mb-3 flex items-center justify-center gap-5">
+          <Checkbox
+            color="success"
+            onChange={(e) => setSpecial(e.target.checked)}
+            aria-labelledby=":R1iracq"
+            aria-describedby="react-aria-:R2iracqH3:"
+          />
+          <span className="font-bold">
+            {" "}
+            Want special characters? &quot;@;/_...&quot;
+          </span>
+        </div>
       </CardBody>
-        <CardFooter>
-            <div className="w-full grid relative -top-2 place-items-center ">
-                <Button className="bg-gradient-to-tr uppercase font-bold hover:scale-105 duration-300 ease-in-out from-green-500 to-yellow-500 text-white shadow-lg" variant="shadow" onPress={handleSubmit} >
-                    Generate Password
-                </Button>
-            </div>
-        </CardFooter>
-
+      <CardFooter>
+        <div className="relative -top-2 grid w-full place-items-center ">
+          <Button
+            className="bg-gradient-to-tr from-green-500 to-yellow-500 font-bold uppercase text-white shadow-lg duration-300 ease-in-out hover:scale-105"
+            variant="shadow"
+            onPress={handleSubmit}>
+            Generate Password
+          </Button>
+        </div>
+      </CardFooter>
     </Card>
   );
 };
