@@ -4,6 +4,7 @@ import { Button } from "@nextui-org/button";
 import { Input } from "@nextui-org/input";
 
 export const CardPassword = () => {
+  
   return (
     <Card>
       <CardHeader className="flex flex-col gap-1">
