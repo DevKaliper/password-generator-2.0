@@ -19,8 +19,9 @@ import { MoonIcon } from "./Icon/MoonIcon";
 
 export const Navbar = () => {
   const { theme, setTheme } = useTheme();
-  const handleChangeTheme = (e) => {
-    if (e.target.checked) {
+  const handleChangeTheme = (e: React.FormEvent<HTMLLabelElement>) => {
+    const target = e.target as HTMLInputElement;
+    if (target.checked) {
       setTheme("dark");
     } else {
       setTheme("light");
