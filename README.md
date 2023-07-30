@@ -1,10 +1,10 @@
-### Password generator 2.0 (in develop)
+### Password generator 2.0
 
-## preview
-![image](https://github.com/DevKaliper/password-generator-2.0/assets/122651755/e3e2689e-3f6d-4e34-b412-7e99e4ab5469)
+
+![image](https://github.com/DevKaliper/password-generator-2.0/assets/122651755/f1715f06-4d2a-4973-994b-ea5cb34a6b3f)
 *Dark mode*
 
 <hr>
 
-![image](https://github.com/DevKaliper/password-generator-2.0/assets/122651755/e52ed965-1c9d-420c-92b8-9890b0c2d6b1)
+![image](https://github.com/DevKaliper/password-generator-2.0/assets/122651755/a087b196-6a2c-46a7-bb6d-1291ab71b964)
 *Light mode*
