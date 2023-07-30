@@ -41,7 +41,7 @@ export const CardPassword = () => {
             type="number"
             value={length}
             placeholder="length"
-            onChange={(e) => setLength(parseInt(e.target.value))}
+            onChange={(e) => setLength((e.target.value))}
             className="max-w-[100px]"
           />
           <span className="font-bold">how many characters?</span>
