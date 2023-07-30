@@ -68,7 +68,7 @@ export const Navbar = () => {
       <NavbarContent justify="end">
         <NavbarItem>
           <Switch
-            defaultSelected
+            
             size="lg"
             color="success"
             onChange={(e) => handleChangeTheme(e)}
@@ -83,7 +83,7 @@ export const Navbar = () => {
             color="success"
             href="#"
             variant="flat"
-            className="flex items-center justify-center gap-2 font-bold text-black dark:bg-gray-200 dark:text-black">
+            className="flex items-center justify-center gap-2 bg-gradient-to-tr uppercase font-bold hover:scale-105 duration-300 ease-in-out from-green-500 to-yellow-500 text-white shadow-lg dark:bg-gray-200 dark:text-black">
             <GithubLogo />
             GITHUB
           </Button>
