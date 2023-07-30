@@ -81,7 +81,8 @@ export const Navbar = () => {
           <Button
             as={Link}
             color="success"
-            href="#"
+            href="https://github.com/DevKaliper/password-generator-2.0"
+            target="_blank"
             variant="flat"
             className="flex items-center justify-center gap-2 bg-gradient-to-tr uppercase font-bold hover:scale-105 duration-300 ease-in-out from-green-500 to-yellow-500 text-white shadow-lg dark:bg-gray-200 dark:text-black">
             <GithubLogo />
