@@ -72,4 +72,5 @@ export const generatePassword = (length, avoid, special) => {
     }
     return pass;
   }
+  return ""
 };

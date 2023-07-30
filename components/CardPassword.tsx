@@ -10,7 +10,7 @@ import { SnackbarProvider, enqueueSnackbar } from "notistack";
 import { FcApproval, FcHighPriority, FcLock } from "react-icons/fc";
 
 export const CardPassword = () => {
-  const [password, setPassword] = useState("");
+  const [password, setPassword] = useState<string>("");
   const [length, setLength] = useState<number>(0);
   const [avoidSimilar, setAvoidSimilar] = useState<boolean>(false);
   const [special, setSpecial] = useState<boolean>(false);
