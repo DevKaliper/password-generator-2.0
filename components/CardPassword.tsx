@@ -101,7 +101,7 @@ export const CardPassword = () => {
           </span>
         </div>
       </CardBody>
-      <CardFooter>
+      <CardFooter className="flex justify-center items-center flex-col gap-3">
         <div className="relative -top-2 grid w-full place-items-center ">
           <Button
             className="bg-gradient-to-tr from-green-500 to-yellow-500 font-bold uppercase text-white shadow-lg duration-300 ease-in-out hover:scale-105"
@@ -110,6 +110,7 @@ export const CardPassword = () => {
             Generate Password
           </Button>
         </div>
+        <p className="text-center italic text-md font-semibold"> Developed by DevKaliper</p>
       </CardFooter>
     </Card>
   );
