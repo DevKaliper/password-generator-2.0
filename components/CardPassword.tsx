@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 import { Card, CardHeader, CardBody, CardFooter } from "@nextui-org/card";
 import { Checkbox } from "@nextui-org/checkbox";
 import { Button } from "@nextui-org/button";
@@ -15,6 +15,13 @@ export const CardPassword = () => {
   const [avoidSimilar, setAvoidSimilar] = useState<boolean>(false);
   const [special, setSpecial] = useState<boolean>(false);
   const [classification, setClassification] = useState<number>(0);
+
+
+  const handleChange = (e: FormEvent<HTMLLabelElement>, setSomething: (arg0: boolean) => void) => {
+    const target = e.target as HTMLInputElement;
+    setSomething(target.checked);
+    
+  }
   
 
   const handleSubmit = () => {
@@ -71,9 +78,10 @@ export const CardPassword = () => {
             id="react-aria-:R1iracq:"
             aria-describedby="react-aria-:R1iracqH3: react-aria-:R1iracqH4:"
             type="number"
-            value={length}
+
+            value={String(length)}
             placeholder="length"
-            onChange={(e) => setLength(e.target.value)}
+            onChange={(e) => setLength(parseInt(e.target.value))}
             className="max-w-[100px]"
           />
           <span className="font-bold">how many characters?</span>
@@ -82,7 +90,7 @@ export const CardPassword = () => {
         <div className="mb-3 flex items-center justify-center gap-5">
           <Checkbox
             color="success"
-            onChange={(e) => setAvoidSimilar(e.target.checked)}
+            onChange={(e) => handleChange(e, setAvoidSimilar)}
             aria-labelledby=":R1iracq"
             aria-describedby="react-aria-:R2iracqH3:"
           />
@@ -91,7 +99,7 @@ export const CardPassword = () => {
         <div className="mb-3 flex items-center justify-center gap-5">
           <Checkbox
             color="success"
-            onChange={(e) => setSpecial(e.target.checked)}
+            onChange={(e) => handleChange(e, setSpecial)}
             aria-labelledby=":R1iracq"
             aria-describedby="react-aria-:R2iracqH3:"
           />
