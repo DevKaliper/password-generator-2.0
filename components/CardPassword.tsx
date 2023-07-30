@@ -6,6 +6,8 @@ import { Checkbox } from "@nextui-org/checkbox";
 import { Button } from "@nextui-org/button";
 import { Input } from "@nextui-org/input";
 import {generatePassword} from "../utils/generator.js"
+import { Snippet } from "@nextui-org/snippet";
+
 
 
 export const CardPassword = () => {
@@ -22,15 +24,8 @@ export const CardPassword = () => {
   return (
     <Card>
       <CardHeader className="flex flex-col gap-1">
-        <Input
-          id="react-aria-:Raracq:"
-          aria-describedby="react-aria-:RaracqH3: react-aria-:RaracqH4:"
-          isReadOnly
-          variant="bordered"
-          value={password}
-          placeholder="Your password will appear here..."
-          className="mx-auto max-w-xs"
-        />
+      <Snippet hideSymbol size="lg" className="w-full text-center">{password}</Snippet>
+        
         <p>Aquí irá la clasificación de contraseña</p>
       </CardHeader>
       <CardBody>
